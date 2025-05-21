@@ -56,4 +56,6 @@ public interface FormTestConfig extends Config {
      * @return параметр поля ввода Current Address
      */
     String currentAddress();
+
+    String avitoInput();
 }

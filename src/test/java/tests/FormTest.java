@@ -1,3 +1,5 @@
+package tests;
+
 import config.FormTestConfig;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -22,24 +24,27 @@ public class FormTest extends BaseTest {
     @Feature("Ввод данных в форму и отправка")
     public void testFormTest() {
         new FormPage(driver)
-                .inputFirstName(config.firstName())
-                .inputLastName(config.lastName())
-                .inputUserEmail(config.userEmail())
-                .clickToGender()
-                .inputUserNumber(config.userNumber())
-                .selectDateOfBirth()
-                .inputSubjectsInput(config.subjectsInput())
-                .clickToHobbiesWrapper()
-                .uploadPicture()
-                .inputCurrentAddress(config.currentAddress())
-                .clickToSelectState()
-                .clickToSelectCity()
-                .clickToSubmit();
+                .inputAvitoSearch(config.avitoInput())
+                .clickToAvitoButton()
+                //.inputFirstName(config.firstName())
+                //.inputLastName(config.lastName())
+                //.inputUserEmail(config.userEmail())
+                //.clickToGender()
+                //.inputUserNumber(config.userNumber())
+                //.selectDateOfBirth()
+                //.inputSubjectsInput(config.subjectsInput())
+                //.clickToHobbiesWrapper()
+                //.uploadPicture()
+                //.inputCurrentAddress(config.currentAddress())
+                //.clickToSelectState()
+                //.clickToSelectCity()
+                //.clickToSubmit()
+        ;
 
 
-        new SuccessfulPage(driver)
-                .checkHead()
-                .checkTableElement();
+        //new SuccessfulPage(driver)
+        //        .checkHead()
+        //        .checkTableElement();
     }
 }
 

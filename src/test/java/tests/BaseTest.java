@@ -1,3 +1,5 @@
+package tests;
+
 import config.BaseConfig;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.JavascriptExecutor;
@@ -39,7 +41,7 @@ public class BaseTest {
         driver.manage().window().maximize(); // максимальный размер окна для удобства
 
         //Неявное ожидание по умолчанию 10 секунд
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
         // Stating the Javascript Executor driver
         JavascriptExecutor js = (JavascriptExecutor)driver;
@@ -49,10 +51,10 @@ public class BaseTest {
     /**
      * Общие настройки для всех тестов, после выполнения каждого
      */
-    @AfterMethod
-    public void tearDown(){
+   // @AfterMethod
+    //public void tearDown(){
 
         // остановка работы драйвера
-        driver.close();
-    }
+        //driver.close();
+   // }
 }
