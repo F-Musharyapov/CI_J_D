@@ -51,10 +51,10 @@ public class BaseTest {
     /**
      * Общие настройки для всех тестов, после выполнения каждого
      */
-   // @AfterMethod
-    //public void tearDown(){
+    @AfterMethod
+    public void tearDown(){
 
         // остановка работы драйвера
-        //driver.close();
-   // }
+        driver.close();
+    }
 }
