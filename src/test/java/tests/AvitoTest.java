@@ -25,27 +25,6 @@ public class AvitoTest extends BaseTest {
         new AvitoPage(driver)
                 .inputAvitoSearch(config.avitoInput())
                 .printFirstUrlSpecifiedNumber(5);
-
-        ;
-
-
-        //new SuccessfulPage(driver)
-        //        .checkHead()
-        //        .checkTableElement();
     }
 }
-/*
-.clickToCategory()    //нажимаем на выпадающий окно с категориями
-                .clickToCategoryOrgtehnika()   //выбор категории
-                .inputStringInSearchFieldItem(config.inputSearchItem())    //вводим Принтер
-        .clickToAreaSearch()           //открытие поля поиска по городу
-                .clickToDeepFieldAreaSearch()  //поле поиска по городам
-                .inputStringInSearchFieldCity(config.inputSearchCity())   //вводим Владивосток
-        .clickBigButtonForFoundedItems()     //нажимаем на кнопку поиска
-                .clickCheckBox()     //чек-бокс только с фото
-                .clickSelectorByAllPrices()    //Выпадающий список
-                .clickExpensive()  //Выбираем Дороже
-                .printFirstPriceByNumber(5); //Выводим первые 5 цен в консоль
-
- */
 
