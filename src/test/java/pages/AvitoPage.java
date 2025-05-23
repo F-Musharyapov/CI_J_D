@@ -30,7 +30,7 @@ public class AvitoPage {
     /**
      * Элемент с полем поиска на главной странице
      */
-    @FindBy(xpath = "//*[@id=\"bx_search\"]/div[2]/div/div/label/div/div/div/input1")
+    @FindBy(xpath = "//*[@id=\"bx_search\"]/div[2]/div/div/label/div/div/div/input")
     private WebElement avitoSearch;
 
 
