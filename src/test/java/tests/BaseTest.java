@@ -1,6 +1,7 @@
 package tests;
 
 import config.BaseConfig;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -29,7 +30,9 @@ public class BaseTest {
     @BeforeMethod
     public void setUp(){
         // Установка настройки с путем к google драйверу
-        System.setProperty(config.driverProperty(), config.driverPath());
+        //System.setProperty(config.driverProperty(), config.driverPath());
+        // Автоматическая настройка ChromeDriver через WebDriverManager
+        WebDriverManager.chromedriver().setup();
 
         // создание экземпляра драйвера
         driver = new ChromeDriver();
