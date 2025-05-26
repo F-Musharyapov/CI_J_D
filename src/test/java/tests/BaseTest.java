@@ -30,9 +30,9 @@ public class BaseTest {
     @BeforeMethod
     public void setUp(){
         // Установка настройки с путем к google драйверу
-        System.setProperty(config.driverProperty(), config.driverPath());
+        //System.setProperty(config.driverProperty(), config.driverPath());
         // Автоматическая настройка ChromeDriver через WebDriverManager
-        //WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().setup();
 
         // создание экземпляра драйвера
         driver = new ChromeDriver();
