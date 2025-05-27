@@ -29,35 +29,20 @@ public class BaseTestSelenoid {
      */
     @BeforeMethod
     public void setUp() throws Exception {
-        // Установка настроек для Chrome
         ChromeOptions options = new ChromeOptions();
+        options.setCapability("browserName", "chrome");
         options.setCapability("browserVersion", "116.0");
-        options.setCapability("selenoid:options", new HashMap<String, Object>() {{
-            put("name", "Test badge...");
-            put("sessionTimeout", "15m");
-            put("env", new ArrayList<String>() {{
-                add("TZ=UTC");
-            }});
-            put("labels", new HashMap<String, Object>() {{
-                put("manual", "true");
-            }});
-            put("enableVideo", true);
-        }});
 
-        // создание экземпляра драйвера с использованием RemoteWebDriver
-        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
-
-        // открытие страницы по url
-        driver.get(config.url());  // открывает и переходит по ссылке
-
-        // разворот страницы на полное окно
-        driver.manage().window().maximize(); // максимальный размер окна для удобства
-
-        // Неявное ожидание по умолчанию 10 секунд
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-
-        // Stating the Javascript Executor driver
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        try {
+            driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
+            driver.get("http://example.com");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (driver != null) {
+                driver.quit();
+            }
+        }
     }
 
     /**
