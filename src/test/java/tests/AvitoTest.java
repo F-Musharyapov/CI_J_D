@@ -11,7 +11,7 @@ import pages.AvitoPage;
  * Основной класс с тестами FormPage
  */
 @Epic("Form Test")
-public class AvitoTest extends BaseTest {
+public class AvitoTest extends BaseTestSelenoid {
 
     /**
      * Экземпляр конфигурации с параметрами для Form тестов
