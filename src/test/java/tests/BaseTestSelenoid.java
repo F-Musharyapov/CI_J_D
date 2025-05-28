@@ -42,7 +42,7 @@ public class BaseTestSelenoid {
             /* How to enable video recording */
             //put("enableVideo", true);
         }});
-        RemoteWebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
+        RemoteWebDriver driver = new RemoteWebDriver(new URL("http://docker-test-environment-selenoid-1:4444/wd/hub"), options);
     }
 
     @AfterMethod
