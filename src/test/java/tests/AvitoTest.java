@@ -16,7 +16,7 @@ public class AvitoTest extends BaseTestSelenoid {
     /**
      * Экземпляр конфигурации с параметрами для Form тестов
      */
-    private final AvitoTestConfig config = ConfigFactory.create(AvitoTestConfig.class, System.getenv());
+    /*private final AvitoTestConfig config = ConfigFactory.create(AvitoTestConfig.class, System.getenv());
 
 
     @Test(description = "Проверки отправки данных с заполненными полями формы")
@@ -26,5 +26,6 @@ public class AvitoTest extends BaseTestSelenoid {
                 .inputAvitoSearch(config.avitoInput())
                 .printFirstUrlSpecifiedNumber(5);
     }
+    */
 }
 

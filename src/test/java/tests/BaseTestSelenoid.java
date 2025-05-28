@@ -34,7 +34,7 @@ public class BaseTestSelenoid {
 
         // Используем имя сервиса вместо localhost
         this.driver = new RemoteWebDriver(
-                new URL("http://selenoid:4445/wd/hub"), // Внутри Docker-сети
+                new URL("http://selenoid:4444/wd/hub"), // Внутри Docker-сети
                 options
         );
 
@@ -42,6 +42,10 @@ public class BaseTestSelenoid {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
         driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(20));
+
+        
+
+
     }
 
     @AfterMethod
