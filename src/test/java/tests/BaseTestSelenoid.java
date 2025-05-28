@@ -34,7 +34,7 @@ public class BaseTestSelenoid {
 
         // Используем имя сервиса вместо localhost
         this.driver = new RemoteWebDriver(
-                new URL("http://localhost:4444/wd/hub"), // Внутри Docker-сети
+                new URL("http://selenoid:4444/wd/hub"), // Внутри Docker-сети
                 options
         );
 
