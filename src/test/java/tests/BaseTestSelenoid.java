@@ -42,7 +42,8 @@ public class BaseTestSelenoid {
             /* How to enable video recording */
             //put("enableVideo", true);
         }});
-        RemoteWebDriver driver = new RemoteWebDriver(new URL("http://172.18.0.4:4444/wd/hub"), options);
+        this.driver = new RemoteWebDriver(new URL("http://selenoid:4444/wd/hub"), options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @AfterMethod
