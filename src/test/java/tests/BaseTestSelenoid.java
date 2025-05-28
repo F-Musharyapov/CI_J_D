@@ -40,7 +40,7 @@ public class BaseTestSelenoid {
             }});
 
             /* How to enable video recording */
-            put("enableVideo", true);
+            //put("enableVideo", true);
         }});
         RemoteWebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
     }
