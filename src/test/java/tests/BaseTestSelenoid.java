@@ -16,41 +16,39 @@ import java.time.Duration;
 
 public class BaseTestSelenoid {
 
-    /**
-     * Переменная с экземпляром драйвера
-     */
     protected WebDriver driver;
 
-    // экземпляр файла конфигурации с общими параметрами
-    private final BaseConfig config = ConfigFactory.create(BaseConfig.class, System.getenv());
-
-    /**
-     * Общие настройки для всех тестов, перед выполнением каждого
-     */
     @BeforeMethod
     public void setUp() throws Exception {
         ChromeOptions options = new ChromeOptions();
-        options.setCapability("browserName", "chrome");
         options.setCapability("browserVersion", "116.0");
+        options.setCapability("selenoid:options", new HashMap<String, Object>() {{
+            /* How to add test badge */
+            put("name", "Test badge...");
 
-        try {
-            driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
-            driver.get("http://example.com");
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (driver != null) {
-                driver.quit();
-            }
-        }
+            /* How to set session timeout */
+            put("sessionTimeout", "15m");
+
+            /* How to set timezone */
+            put("env", new ArrayList<String>() {{
+                add("TZ=UTC");
+            }});
+
+            /* How to add "trash" button */
+            put("labels", new HashMap<String, Object>() {{
+                put("manual", "true");
+            }});
+
+            /* How to enable video recording */
+            put("enableVideo", true);
+        }});
+        RemoteWebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
     }
 
-    /**
-     * Общие настройки для всех тестов, после выполнения каждого
-     */
     @AfterMethod
     public void tearDown() {
-        // остановка работы драйвера
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
