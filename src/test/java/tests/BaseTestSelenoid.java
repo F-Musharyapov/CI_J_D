@@ -43,7 +43,7 @@ public class BaseTestSelenoid {
             //put("enableVideo", true);
         }});
         this.driver = new RemoteWebDriver(
-                new URL("http://selenoid:4444/wd/hub"),
+                new URL("http://localhost:4445/wd/hub"),
                 options
         );
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
