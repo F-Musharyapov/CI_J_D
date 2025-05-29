@@ -19,7 +19,7 @@ public class BaseTestSelenoid {
     @BeforeMethod
     public void setUp() throws Exception {
         ChromeOptions options = new ChromeOptions();
-
+        options.setCapability("browserVersion", "116.0");
         options.setCapability("selenoid:options", new HashMap<String, Object>() {{
             /* How to add test badge */
             put("name", "Test badge...");
