@@ -1,5 +1,7 @@
 package tests;
 
+import config.BaseConfig;
+import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -15,6 +17,7 @@ import java.util.Map;
 
 public class BaseTestSelenoid {
     protected WebDriver driver;
+    private final BaseConfig config = ConfigFactory.create(BaseConfig.class, System.getenv());
 
     @BeforeMethod
     public void setUp() throws Exception {
@@ -26,16 +29,17 @@ public class BaseTestSelenoid {
         selenoidOptions.put("sessionTimeout", "15m");
         selenoidOptions.put("env", List.of("TZ=UTC"));
         selenoidOptions.put("labels", Map.of("manual", "true"));
-        selenoidOptions.put("enableVideo", true);
+        selenoidOptions.put("enableVideo", false);
         selenoidOptions.put("enableVNC", true);  // Добавьте это для отладки
 
         options.setCapability("selenoid:options", selenoidOptions);
 
         this.driver = new RemoteWebDriver(
-                new URL("http://selenoid:4444/wd/hub"),
+                //new URL("http://selenoid:4444/wd/hub"),
+                new URL("http://localhost:4444/wd/hub"),
                 options
         );
-
+        driver.get(config.url());
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
         driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(20));

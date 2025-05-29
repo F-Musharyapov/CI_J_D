@@ -19,6 +19,6 @@ public class Waiters {
      * @param element элемент
      */
     public static void waitUntilVisible(final WebDriver driver, WebElement element) {
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(element));
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(element));
     }
 }

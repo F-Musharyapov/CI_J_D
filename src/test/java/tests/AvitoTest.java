@@ -21,10 +21,11 @@ public class AvitoTest extends BaseTestSelenoid {
 
     @Test(description = "Проверки отправки данных с заполненными полями формы")
     @Feature("Ввод данных в форму и отправка")
-    public void testFormTest() {
+    public void testFormTest() throws InterruptedException {
         new AvitoPage(driver)
                 .inputAvitoSearch(config.avitoInput())
                 .printFirstUrlSpecifiedNumber(5);
+        Thread.sleep(5000);
     }
 
 }
