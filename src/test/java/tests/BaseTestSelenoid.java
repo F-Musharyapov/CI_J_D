@@ -10,44 +10,35 @@ import java.net.URL;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BaseTestSelenoid {
-
     protected WebDriver driver;
 
     @BeforeMethod
     public void setUp() throws Exception {
         ChromeOptions options = new ChromeOptions();
         options.setCapability("browserVersion", "116.0");
-        options.setCapability("selenoid:options", new HashMap<String, Object>() {{
-            /* How to add test badge */
-            put("name", "Test badge...");
 
-            /* How to set session timeout */
-            put("sessionTimeout", "15m");
+        Map<String, Object> selenoidOptions = new HashMap<>();
+        selenoidOptions.put("name", "Test badge...");
+        selenoidOptions.put("sessionTimeout", "15m");
+        selenoidOptions.put("env", List.of("TZ=UTC"));
+        selenoidOptions.put("labels", Map.of("manual", "true"));
+        selenoidOptions.put("enableVideo", true);
+        selenoidOptions.put("enableVNC", true);  // Добавьте это для отладки
 
-            /* How to set timezone */
-            put("env", new ArrayList<String>() {{
-                add("TZ=UTC");
-            }});
+        options.setCapability("selenoid:options", selenoidOptions);
 
-            /* How to add "trash" button */
-            put("labels", new HashMap<String, Object>() {{
-                put("manual", "true");
-            }});
+        this.driver = new RemoteWebDriver(
+                new URL("http://selenoid:4444/wd/hub"),
+                options
+        );
 
-            /* How to enable video recording */
-            put("enableVideo", true);
-        }});
-        RemoteWebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
-
-        // Настройка таймаутов
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
         driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(20));
-
-
     }
 
     @AfterMethod
