@@ -20,21 +20,13 @@ public class BaseTestSelenoid {
         ChromeOptions options = new ChromeOptions();
         options.setCapability("browserVersion", "116.0");
 
-        // Улучшенная конфигурация для Selenoid
         Map<String, Object> selenoidOptions = new HashMap<>();
-        selenoidOptions.put("name", "Test badge...");
-        selenoidOptions.put("sessionTimeout", "15m");
-        selenoidOptions.put("env", new String[]{"TZ=UTC"});
-        selenoidOptions.put("labels", Map.of("manual", "true"));
-        selenoidOptions.put("enableVNC", true);  // Включение VNC для отладки
-        selenoidOptions.put("enableVideo", false); // Видео можно включить при необходимости
-        selenoidOptions.put("enableLog", true); // Логирование
-
+        selenoidOptions.put("enableVNC", true);
+        selenoidOptions.put("enableVideo", false);
         options.setCapability("selenoid:options", selenoidOptions);
 
-        // Используем имя сервиса вместо localhost
-        this.driver = new RemoteWebDriver(
-                new URL("http://selenoid:4444/wd/hub"), // Внутри Docker-сети
+        WebDriver driver = new RemoteWebDriver(
+                new URL("http://selenoid:4444/wd/hub"),
                 options
         );
 
@@ -42,8 +34,6 @@ public class BaseTestSelenoid {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
         driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(20));
-
-        
 
 
     }
