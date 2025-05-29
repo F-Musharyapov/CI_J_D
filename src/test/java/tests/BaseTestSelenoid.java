@@ -35,8 +35,8 @@ public class BaseTestSelenoid {
         options.setCapability("selenoid:options", selenoidOptions);
 
         this.driver = new RemoteWebDriver(
-                //new URL("http://selenoid:4444/wd/hub"),
-                new URL("http://localhost:4444/wd/hub"),
+                new URL("http://selenoid:4444/wd/hub"),
+                //new URL("http://localhost:4444/wd/hub"),
                 options
         );
         driver.get(config.url());
