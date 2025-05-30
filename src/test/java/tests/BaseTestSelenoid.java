@@ -63,8 +63,6 @@ public class BaseTestSelenoid {
 
         //RemoteWebDriver driver = new RemoteWebDriver(
         this.driver = new RemoteWebDriver(
-                //new URL("http://selenoid:4444/wd/hub"),
-                //new URL("http://localhost:4444/wd/hub"),
                 new URL("http://172.17.0.2:4444/wd/hub"),
                 options
         );
