@@ -48,8 +48,6 @@ public class BaseTestSelenoid {
         }});
 
 
-        //ChromeOptions options = new ChromeOptions();
-        //options.setCapability("browserVersion", "116.0");
 
         //Map<String, Object> selenoidOptions = new HashMap<>();
         //selenoidOptions.put("name", "Test badge...");
