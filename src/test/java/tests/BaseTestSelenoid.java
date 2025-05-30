@@ -48,8 +48,6 @@ public class BaseTestSelenoid {
         }});
 
 
-
-        //Map<String, Object> selenoidOptions = new HashMap<>();
         //selenoidOptions.put("name", "Test badge...");
         //selenoidOptions.put("sessionTimeout", "15m");
         //selenoidOptions.put("env", List.of("TZ=UTC"));
