@@ -52,7 +52,7 @@ public class AvitoPage {
      */
     @Step("Ввод данных в поле ввода")
     public AvitoPage inputAvitoSearch(String input) {
-        //waitUntilVisible(driver, avitoSearch);
+        waitUntilVisible(driver, avitoSearch);
         avitoSearch.sendKeys(input);
         makeScreenShot(driver);
         return this;
